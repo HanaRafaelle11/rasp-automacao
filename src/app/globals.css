@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+
+  /* Brand Colors */
+  --color-brand-red: #C41E1E;
+  --color-brand-red-dark: #9B1818;
+  --color-brand-orange: #E06B1C;
+
+  /* Primary (Petroleum Blue) */
+  --color-primary-50: #E6F4F6;
+  --color-primary-100: #C3E3E8;
+  --color-primary-200: #90CAD5;
+  --color-primary-250: #76BDCB;
+  --color-primary-300: #5CAABE;
+  --color-primary-350: #4B9CAE;
+  --color-primary-400: #3B8DA3;
+  --color-primary-450: #2F7C91;
+  --color-primary-500: #267288;
+  --color-primary-550: #216377;
+  --color-primary-600: #1F5A6D;
+  --color-primary-650: #1B4F5F;
+  --color-primary-700: #1A4958;
+  --color-primary-750: #163E4B;
+  --color-primary-800: #173C48;
+  --color-primary-850: #12303A;
+  --color-primary-900: #16323D;
+  --color-primary-950: #0D2028;
+
+  /* Neutrals (Industrial Graphite) */
+  --color-gray-50: #F5F7F8;
+  --color-gray-100: #E9EDEF;
+  --color-gray-200: #D0D7DA;
+  --color-gray-300: #AAB7BC;
+  --color-gray-400: #7E9098;
+  --color-gray-500: #61747C;
+  --color-gray-600: #4C5B62;
+  --color-gray-650: #445158;
+  --color-gray-700: #3E4A50;
+  --color-gray-750: #2F373C;
+  --color-gray-800: #353E43;
+  --color-gray-900: #2E3539;
+  --color-gray-950: #1E2326;
+
+  /* WhatsApp */
+  --color-whatsapp: #128C7E;
+  --color-whatsapp-dark: #075E54;
+  --color-whatsapp-light: #DCF8C6;
+
+  /* Custom Shadows */
+  --shadow-card: 0 2px 8px rgba(30, 41, 59, 0.08);
+  --shadow-card-hover: 0 8px 24px rgba(30, 41, 59, 0.14);
+  --shadow-cta: 0 4px 14px rgba(31, 90, 109, 0.35);
+  --shadow-whatsapp: 0 4px 16px rgba(18, 140, 126, 0.40);
+}
+
+/* ─── Base Styles ────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: var(--gray-50);
+  color: var(--gray-800);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Accessibility ──────────────────────────────────────────────────────── */
+/* Never remove focus outline */
+:focus-visible {
+  outline: 2px solid var(--color-primary-600, #1F5A6D);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Skip link */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.focus\:not-sr-only:focus {
+  position: fixed;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gray-300, #CBD5E1);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-400);
+}
+
+/* ─── Section Animations ─────────────────────────────────────────────────── */
+.section-animate {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-animate.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-animate-delay-1 { transition-delay: 0.1s; }
+.section-animate-delay-2 { transition-delay: 0.2s; }
+.section-animate-delay-3 { transition-delay: 0.3s; }
+.section-animate-delay-4 { transition-delay: 0.4s; }
+.section-animate-delay-5 { transition-delay: 0.5s; }
+
+/* ─── WhatsApp FAB Pulse ─────────────────────────────────────────────────── */
+@keyframes whatsapp-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+  70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-pulse {
+  animation: whatsapp-pulse 2.5s infinite;
+}
+
+/* ─── Gradient Backgrounds ───────────────────────────────────────────────── */
+.hero-gradient {
+  background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 50%, #F1F5F9 100%);
+}
+
+.section-gradient-alt {
+  background: linear-gradient(180deg, #F1F5F9 0%, #F8FAFC 100%);
+}
+
+/* ─── Service Card Hover ─────────────────────────────────────────────────── */
+.service-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ─── Selection Color ────────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--primary-100);
+  color: var(--primary-900);
+}
+
+/* ─── Print Styles ───────────────────────────────────────────────────────── */
+@media print {
+  .no-print { display: none !important; }
+  body { font-size: 12pt; }
+}
