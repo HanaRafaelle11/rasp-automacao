@@ -115,10 +115,25 @@ export function ServicesSection() {
           >
             Tecnologia e engenharia para sua operação
           </h2>
-          <p className="text-gray-600 text-base leading-relaxed">
-            Soluções integradas em automação industrial, instalações elétricas e projetos técnicos —
-            do diagnóstico à entrega, com excelência e suporte contínuo.
+          <ul className="text-left inline-block space-y-2 mb-4 text-gray-700 text-sm font-medium" role="list">
+            {[
+              'Instalações elétricas industriais e residenciais',
+              'Controle e Automação',
+              'Montagem de Painéis Elétricos',
+              'Projetos Elétricos',
+              'Manutenção em Geral',
+              'Programação de CLPs e IHMs',
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2">
+                <span className="mt-0.5 w-1.5 h-1.5 rounded-full bg-primary-600 flex-shrink-0" aria-hidden="true" />
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p className="text-primary-700 font-semibold text-sm">
+            Veja mais detalhes abaixo!
           </p>
+
         </div>
 
         {/* Services Grid */}

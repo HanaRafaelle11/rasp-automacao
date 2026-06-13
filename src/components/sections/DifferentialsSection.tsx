@@ -77,9 +77,8 @@ export function DifferentialsSection() {
               Engenharia especializada com atendimento consultivo
             </h2>
             <p className="text-gray-750 leading-relaxed font-semibold mb-8 text-base">
-              Cada projeto começa com um diagnóstico técnico detalhado.
-              Entendemos o seu processo antes de propor qualquer solução.
-              Porque a solução certa economiza tempo, recursos e evita retrabalho.
+              Rasp Automação é uma empresa especializada nas áreas de instalações elétricas,
+              automação industrial, montagem de painéis elétricos e projetos industriais.
             </p>
             <a
               href={WHATSAPP_LINKS.services}

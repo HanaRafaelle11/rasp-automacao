@@ -4,38 +4,148 @@ import { PARTNERS } from '@/lib/constants'
 import { useIntersection } from '@/hooks/useIntersection'
 import { cn } from '@/lib/utils'
 
+// ─── Logos SVG fiéis às marcas oficiais ───────────────────────────────────────
+
 const PARTNER_LOGOS: Record<string, React.ReactNode> = {
+
+  // WEG — wordmark azul com curva característica
   WEG: (
-    <svg viewBox="0 0 120 40" className="h-8 w-auto text-[#00579F] fill-current" aria-hidden="true">
-      <path d="M10 8h8l6 14 6-14h8l6 14 6-14h8l-10 24H38L32 15l-6 13H18L10 8z" />
-      <text x="76" y="27" className="font-sans font-black tracking-tighter text-xl">weg</text>
+    <svg viewBox="0 0 160 60" className="h-9 w-auto" aria-hidden="true" role="img">
+      <title>WEG</title>
+      {/* Fundo azul oficial WEG */}
+      <rect width="160" height="60" rx="4" fill="#003087" />
+      {/* Wordmark branco */}
+      <text
+        x="80"
+        y="42"
+        textAnchor="middle"
+        fontFamily="Arial Black, Arial, sans-serif"
+        fontWeight="900"
+        fontSize="30"
+        letterSpacing="2"
+        fill="#ffffff"
+      >
+        WEG
+      </text>
     </svg>
   ),
+
+  // Panasonic — wordmark azul escuro em caixa alta
   Panasonic: (
-    <svg viewBox="0 0 120 40" className="h-7 w-auto text-[#0f2c59] fill-current" aria-hidden="true">
-      <text x="0" y="28" className="font-sans font-black tracking-tight text-[19px] italic uppercase text-[#0f2c59]">Panasonic</text>
+    <svg viewBox="0 0 200 50" className="h-8 w-auto" aria-hidden="true" role="img">
+      <title>Panasonic</title>
+      {/* Azul oficial Panasonic #0052A5 */}
+      <text
+        x="4"
+        y="36"
+        fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif"
+        fontWeight="700"
+        fontSize="28"
+        fill="#0052A5"
+        letterSpacing="-0.5"
+      >
+        Panasonic
+      </text>
     </svg>
   ),
+
+  // Delta — triângulo + wordmark, azul oficial #0060AF
   Delta: (
-    <svg viewBox="0 0 120 40" className="h-8 w-auto text-[#0060A9] fill-current" aria-hidden="true">
-      <path d="M12 8l10 20H2L12 8zm0 5L6 25h12L12 13z" />
-      <text x="28" y="28" className="font-sans font-black tracking-tight text-[22px]">DELTA</text>
+    <svg viewBox="0 0 180 55" className="h-9 w-auto" aria-hidden="true" role="img">
+      <title>Delta Electronics</title>
+      {/* Triângulo estilizado Delta */}
+      <polygon points="0,46 22,10 44,46" fill="#0060AF" />
+      <polygon points="8,46 22,21 36,46" fill="#ffffff" />
+      {/* Wordmark DELTA */}
+      <text
+        x="52"
+        y="40"
+        fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif"
+        fontWeight="900"
+        fontSize="26"
+        fill="#0060AF"
+        letterSpacing="1"
+      >
+        DELTA
+      </text>
     </svg>
   ),
+
+  // Prysmian — wordmark vermelho corporativo
   Prysmian: (
-    <svg viewBox="0 0 120 40" className="h-8 w-auto text-[#002F6C] fill-current" aria-hidden="true">
-      <path d="M5 8h15c5 0 9 3 9 7s-4 7-9 7H11v10H5V8zm6 5v5h8c2 0 4-1 4-2.5S21 13 19 13h-8z" />
-      <text x="44" y="28" className="font-sans font-black tracking-tighter text-[16px] uppercase">Prysmian</text>
+    <svg viewBox="0 0 200 50" className="h-8 w-auto" aria-hidden="true" role="img">
+      <title>Prysmian Group</title>
+      {/* Vermelho oficial Prysmian #E30613 */}
+      <text
+        x="2"
+        y="36"
+        fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif"
+        fontWeight="700"
+        fontSize="26"
+        fill="#E30613"
+      >
+        Prysmian
+      </text>
+      {/* Subelemento "Group" em cinza */}
+      <text
+        x="2"
+        y="48"
+        fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif"
+        fontWeight="400"
+        fontSize="11"
+        fill="#555555"
+        letterSpacing="3"
+      >
+        GROUP
+      </text>
     </svg>
   ),
+
+  // Metaltex — wordmark cinza escuro/preto industrial
   Metaltex: (
-    <svg viewBox="0 0 120 40" className="h-8 w-auto text-gray-900 fill-current" aria-hidden="true">
-      <text x="0" y="28" className="font-sans font-black tracking-tighter text-[19px] uppercase italic">Metaltex</text>
+    <svg viewBox="0 0 200 50" className="h-8 w-auto" aria-hidden="true" role="img">
+      <title>Metaltex</title>
+      <text
+        x="2"
+        y="36"
+        fontFamily="'Arial Black', Arial, sans-serif"
+        fontWeight="900"
+        fontSize="26"
+        fill="#1A1A1A"
+        letterSpacing="-0.5"
+      >
+        METALTEX
+      </text>
     </svg>
   ),
+
+  // Celmar — wordmark azul + tagline
   Celmar: (
-    <svg viewBox="0 0 120 40" className="h-8 w-auto text-primary-750 fill-current" aria-hidden="true">
-      <text x="10" y="28" className="font-sans font-black tracking-tighter text-[20px] uppercase">Celmar</text>
+    <svg viewBox="0 0 180 55" className="h-9 w-auto" aria-hidden="true" role="img">
+      <title>Celmar Materiais Elétricos</title>
+      {/* Azul corporativo Celmar */}
+      <text
+        x="2"
+        y="34"
+        fontFamily="'Arial Black', Arial, sans-serif"
+        fontWeight="900"
+        fontSize="30"
+        fill="#004A8F"
+        letterSpacing="1"
+      >
+        CELMAR
+      </text>
+      <text
+        x="3"
+        y="48"
+        fontFamily="Arial, sans-serif"
+        fontWeight="400"
+        fontSize="10"
+        fill="#666666"
+        letterSpacing="1.5"
+      >
+        MATERIAIS ELÉTRICOS
+      </text>
     </svg>
   ),
 }
